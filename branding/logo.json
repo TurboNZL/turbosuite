@@ -1,0 +1,10 @@
+{
+  "name": "TurboNZL",
+  "emblem": null,
+  "emblemColor": null,
+  "out": {
+    "svg": "site/icon.svg",
+    "mono": "site/icon-mono.svg",
+    "png": [["site/icon-512.png", 512], ["site/icon-192.png", 192], ["site/favicon-32.png", 32]]
+  }
+}

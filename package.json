@@ -1,0 +1,15 @@
+{
+  "name": "turbosuite",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The TurboNZL apps' website: a static site for Cloudflare Pages, with real screenshots of the running apps.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "serve": "npx --yes serve site -l 4173"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

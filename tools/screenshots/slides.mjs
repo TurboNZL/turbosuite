@@ -1,0 +1,13 @@
+import { session } from './lib.mjs';
+const s = await session({ w: 1440, h: 900 }); const { p, shot } = s;
+await p.goto('http://127.0.0.1:5303/edit?new=pptx', { waitUntil: 'load' }); await p.waitForTimeout(2000);
+const edit = async (x, y, text) => { await p.mouse.click(x, y); await p.waitForTimeout(250); await p.mouse.dblclick(x, y); await p.waitForTimeout(400); await p.keyboard.press('Control+A'); await p.keyboard.type(text); await p.keyboard.press('Escape'); await p.waitForTimeout(300); };
+await edit(912, 390, 'Quarterly review');
+await edit(912, 487, 'What shipped, and what is next');
+await p.getByText('New slide', { exact: true }).first().click(); await p.waitForTimeout(800);
+await edit(550, 242, 'What shipped');
+await p.mouse.click(565, 334); await p.waitForTimeout(250); await p.mouse.dblclick(565, 334); await p.waitForTimeout(400); await p.keyboard.press('Control+A');
+await p.keyboard.type('Offline shopping list'); await p.keyboard.press('Enter'); await p.keyboard.type('Faster sync after a long gap'); await p.keyboard.press('Enter'); await p.keyboard.type('Themes that follow the device'); await p.keyboard.press('Enter'); await p.keyboard.type('One shared look across every app');
+await p.keyboard.press('Escape'); await p.waitForTimeout(300); await p.mouse.click(395, 600); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+await shot('docs-desk-slides', 500);
+await s.close();
