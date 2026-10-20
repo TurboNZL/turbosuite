@@ -1,6 +1,6 @@
 # TurboSuite
 
-The public website for the TurboNZL apps: **TurboMusic, TurboPantry, TurboKeep, TurboCut, TurboDocs and TurboBudget**. It is a static site (HTML, CSS and a little JavaScript, no build step) meant for Cloudflare Pages, and every screenshot on it is a real capture of the running app, never a generated image.
+The public website for **TurboSuite**, the apps TurboNZL builds for their own use: **TurboMusic, TurboPantry, TurboKeep, TurboCut, TurboDocs and TurboBudget**. They are vibecoded (an AI writes the code from the owner's direction) and the site says so plainly. It is a static site (HTML, CSS and a little JavaScript, no build step) meant for Cloudflare Pages, and every screenshot on it is a real capture of the running app, never a generated image.
 
 Built on [TurboNZL/turboengine](https://github.com/TurboNZL/turboengine): the theme engine (neutral pack) and the picker on the page, the engine's motion language, and the engine logo family. `.turboengine.json` says which commit and modules.
 

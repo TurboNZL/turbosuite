@@ -1,7 +1,16 @@
 {
-  "engine": { "repo": "TurboNZL/turboengine", "ref": "078343d4f06046c193b66afcb959e93ca4530022" },
-  "modules": ["release-pipeline", "appearance", "guides-and-docs", "logos", "motion"],
+  "engine": {
+    "repo": "TurboNZL/turboengine",
+    "ref": "42d3ea80c0f183897b4bb9b54d5403737f19f5cb"
+  },
+  "modules": [
+    "release-pipeline",
+    "appearance",
+    "guides-and-docs",
+    "logos",
+    "motion"
+  ],
   "themes": "open pack (themes-open): neutral looks only, because this is a public site",
   "moved": {},
-  "notes": "A static website (no app, no server, no Electron, no Android), so most modules do not apply and the ones that do are used in their plainest form. appearance: the site vendors themes-open/dist (base.css + engine.global.js) into site/vendor/turbothemes and starts it from site/assets/site.js; there is no React Layout/AppearanceCard, the engine's own <turbo-themes-picker> is the picker. Fonts are 'none' and updates are off (source: false) so the page makes no third-party request; to take newer themes, copy the two files again from a newer engine commit and update `ref`. motion: site/assets/motion.css is the engine's file unchanged (only tk-swap is used; tk-arrive animates max-height, so it is not used on big blocks). logos: branding/logo.json is the bare engine mark (no emblem); the six app icons under site/img/apps are copied from each app's own repo. release-pipeline: auto-pr.yml is the engine's with the PR text changed, release.yml is only its `release` job (tag vYYYY.M.N; Cloudflare Pages deploys main), check.yml is the site check and also runs on pull requests. guides-and-docs: no in-app guides (docs/guides is not used); docs/development has the rest."
+  "notes": "A static website (no app, no server, no Electron, no Android), so most modules do not apply and the ones that do are used in their plainest form. appearance: the site vendors themes-open/dist (base.css + engine.global.js) built locally from engine branch commit 42d3ea8 (the picker's themed drop-downs; CI rebuilds dist on main after that merges: re-vendor from main then and move `ref` to the merge commit) into site/vendor/turbothemes and starts it from site/assets/site.js; there is no React Layout/AppearanceCard, the engine's own <turbo-themes-picker> is the picker. Fonts are 'none' and updates are off (source: false) so the page makes no third-party request; to take newer themes, copy the two files again from a newer engine commit and update `ref`. motion: site/assets/motion.css is the engine's file unchanged (only tk-swap is used; tk-arrive animates max-height, so it is not used on big blocks). logos: branding/logo.json is the bare engine mark (no emblem); the six app icons under site/img/apps are copied from each app's own repo. release-pipeline: auto-pr.yml is the engine's with the PR text changed, release.yml is only its `release` job (tag vYYYY.M.N; Cloudflare Pages deploys main), check.yml is the site check and also runs on pull requests. guides-and-docs: no in-app guides (docs/guides is not used); docs/development has the rest."
 }
