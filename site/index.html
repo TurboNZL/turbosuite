@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TurboNZL: a suite of small apps that look and update the same way</title>
-<meta name="description" content="TurboMusic, TurboPantry, TurboKeep, TurboCut, TurboDocs and TurboBudget: open-source apps for music, recipes, notes, video, documents and budgets. Real screenshots, MIT licensed, built on one shared engine.">
+<title>TurboSuite: small vibecoded apps that look and update the same way</title>
+<meta name="description" content="TurboSuite: TurboMusic, TurboPantry, TurboKeep, TurboCut, TurboDocs and TurboBudget. Vibecoded apps for music, recipes, notes, video, documents and budgets, made for TurboNZL's own use first. Open source, real screenshots, one shared engine.">
 <meta name="theme-color" content="#0b0b0e">
 <meta name="color-scheme" content="dark light">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -16,12 +16,13 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<a class="skip btn btn-accent" href="#main">Skip to the apps</a>
+<a class="skip" href="#main">Skip to the content</a>
 
 <header class="site-top bt-top">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="icon-192.png" width="32" height="32" alt=""><span>TurboNZL</span></a>
+    <a class="brand" href="#top"><img src="icon-192.png" width="32" height="32" alt=""><span>TurboSuite</span></a>
     <nav class="site-nav" aria-label="Sections">
+      <a href="#about">About</a>
       <a href="#apps">Apps</a>
       <a href="#looks">Looks</a>
       <a href="#engine">Engine</a>
@@ -35,7 +36,7 @@
   <div class="hero" id="top">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">TurboNZL</p>
+        <p class="eyebrow">TurboSuite</p>
         <h1>Small apps for everyday things, built to feel like one.</h1>
         <p class="lede">Music, recipes, notes, video, documents and budgets. Open source, yours to run, and every one of them looks, moves and updates the same way.</p>
         <div class="cta">
@@ -43,6 +44,7 @@
           <a class="btn" href="#looks">Try another look</a>
         </div>
         <div class="icon-row" aria-label="The apps"><a href="#turbomusic" title="TurboMusic"><img src="img/apps/turbomusic.png" width="54" height="54" alt="TurboMusic"></a><a href="#turbopantry" title="TurboPantry"><img src="img/apps/turbopantry.png" width="54" height="54" alt="TurboPantry"></a><a href="#turbokeep" title="TurboKeep"><img src="img/apps/turbokeep.png" width="54" height="54" alt="TurboKeep"></a><a href="#turbocut" title="TurboCut"><img src="img/apps/turbocut.png" width="54" height="54" alt="TurboCut"></a><a href="#turbodocs" title="TurboDocs"><img src="img/apps/turbodocs.png" width="54" height="54" alt="TurboDocs"></a><a href="#turbobudget" title="TurboBudget"><img src="img/apps/turbobudget.svg" width="54" height="54" alt="TurboBudget"></a></div>
+        <p class="vibe-hero"><strong>Vibecoded, for TurboNZL's own use.</strong> An AI writes the code from TurboNZL's direction. These are not hand-written apps; they are one person's vision, made to fit their own life first. <a href="#about">More on that</a></p>
       </div>
       <div class="stack" aria-hidden="false">
         <figure class="shot card frame shot-main" style="margin:0"><img src="img/screens/turbomusic-home.webp" width="1440" height="900" alt="TurboMusic home screen with library stats and tracks back in rotation" fetchpriority="high"></figure>
@@ -51,6 +53,18 @@
       </div>
     </div>
   </div>
+
+  <section id="about" class="reveal" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="card vibe">
+        <p class="eyebrow">Read this first</p>
+        <h2 id="about-h">Vibecoded for TurboNZL's own use, not hand-written</h2>
+        <p>Every app on this page is <strong>vibecoded</strong>: TurboNZL tells an AI (Claude) what is wanted, looks at what comes back, and steers until it is right. The code was not written by hand, and it is not presented as hand-crafted work.</p>
+        <p>What is TurboNZL's is the <strong>vision</strong>: what each app is for, how it should feel, what it must never do, and every decision about it. The apps exist because they were wanted for TurboNZL's own life, so they fit those habits first. If they suit you too, great; expect rough edges, and expect them to change when those needs do.</p>
+        <p class="muted">The screenshots are real captures of the running apps, filled with invented sample data. The code is open source (MIT) and it is all on GitHub.</p>
+      </div>
+    </div>
+  </section>
 
   <div id="apps" class="band-top">
 
@@ -61,8 +75,9 @@
         <p class="app-tag">Rank your music by asking one question: which is better?</p>
         <p class="app-desc">A music library manager for people who own their files and care about what ranks first. Head-to-head votes become a 0 to 10 rating for every track, and everything keeps working offline.</p>
         <ul class="feats"><li>Votes are an append-only log; ratings are replayed from it, so voting on several devices merges cleanly.</li><li>A real queue, playback rules ("always play B right after A"), crossfade, a ten-band equaliser and synced lyrics.</li><li>Albums, releases, eras and notes, with search chips like <code>artist:</code> and <code>rating:</code>.</li><li>Local first: each client holds the library and syncs with a small server, for example on a Raspberry Pi.</li></ul>
-        <ul class="chips" aria-label="Where it runs"><li class="chip">Web (installable)</li><li class="chip">Windows</li><li class="chip">Linux</li><li class="chip">Android + Android Auto</li><li class="chip">Self-hosted server</li></ul>
+        <ul class="chips" aria-label="Where it runs"><li class="chip chip-vibe">Vibecoded for TurboNZL's own use</li><li class="chip">Web (installable)</li><li class="chip">Windows</li><li class="chip">Linux</li><li class="chip">Android + Android Auto</li><li class="chip">Self-hosted server</li></ul>
         <div class="links">
+          
           <a class="btn btn-accent" href="https://github.com/TurboNZL/turbomusic/releases">Get it</a>
           <a class="btn" href="https://github.com/TurboNZL/turbomusic">Source on GitHub</a>
         </div>
@@ -78,8 +93,9 @@
         <p class="app-tag">A recipe box, a pantry and a shopping list that stays in sync.</p>
         <p class="app-desc">Import recipes from websites, keep them in one place, and add only the ingredients you are missing to a list shared between the people in your home.</p>
         <ul class="feats"><li>A recipe shows what you already have ("have it" or "none") and adds just the rest to the list.</li><li>The shopping list updates live on every phone; ticking things off puts them in the pantry.</li><li>Scale servings, switch unit modes, bold the amounts, mark "I cooked this".</li><li>Built for the phone first, with a few accounts on one server and no paid service anywhere.</li></ul>
-        <ul class="chips" aria-label="Where it runs"><li class="chip">Web (phone first)</li><li class="chip">Self-hosted server</li><li class="chip">Android (early)</li></ul>
+        <ul class="chips" aria-label="Where it runs"><li class="chip chip-vibe">Vibecoded for TurboNZL's own use</li><li class="chip">Web (phone first)</li><li class="chip">Self-hosted server</li><li class="chip">Android (early)</li></ul>
         <div class="links">
+          
           <a class="btn btn-accent" href="https://github.com/TurboNZL/turbopantry/releases">Get it</a>
           <a class="btn" href="https://github.com/TurboNZL/turbopantry">Source on GitHub</a>
         </div>
@@ -95,8 +111,9 @@
         <p class="app-tag">To-dos and notes in one small app.</p>
         <p class="app-desc">There is one kind of thing: you type something and it is on your list. Tick it to finish it, or send it to tags to keep it.</p>
         <ul class="feats"><li>Tags with emoji and colour, drag to reorder, pin, archive, bin, search, autosave.</li><li>Warns instead of overwriting when the same item changed on another device.</li><li>Imports and exports Standard Notes, Vikunja and its own backup, so you can leave at any time.</li><li>An Android app with a home-screen widget, quick add and a share target.</li></ul>
-        <ul class="chips" aria-label="Where it runs"><li class="chip">Web</li><li class="chip">Android</li><li class="chip">Self-hosted server</li></ul>
+        <ul class="chips" aria-label="Where it runs"><li class="chip chip-vibe">Vibecoded for TurboNZL's own use</li><li class="chip">Web</li><li class="chip">Android</li><li class="chip">Self-hosted server</li></ul>
         <div class="links">
+          
           <a class="btn btn-accent" href="https://github.com/TurboNZL/turbokeep/releases">Get it</a>
           <a class="btn" href="https://github.com/TurboNZL/turbokeep">Source on GitHub</a>
         </div>
@@ -112,8 +129,9 @@
         <p class="app-tag">A lightweight video editor for short vertical clips.</p>
         <p class="app-desc">A multi-track editor for short vertical videos, and longer 16:9 edits too, with automatic captions built in.</p>
         <ul class="feats"><li>Multi-track video and audio timeline at 60 fps, with keyframes on every setting.</li><li>Automatic captions from a local Whisper model, with caption styles and fonts.</li><li>Exports MP4 or WebM in the app. Projects are small <code>.turbocut</code> files.</li><li>One web codebase, wrapped for Windows and Ubuntu (Electron) and Android (Capacitor).</li></ul>
-        <ul class="chips" aria-label="Where it runs"><li class="chip">Windows</li><li class="chip">Ubuntu</li><li class="chip">Android</li><li class="chip">Web</li></ul>
+        <ul class="chips" aria-label="Where it runs"><li class="chip chip-vibe">Vibecoded for TurboNZL's own use</li><li class="chip">Windows</li><li class="chip">Ubuntu</li><li class="chip">Android</li><li class="chip">Web</li></ul>
         <div class="links">
+          
           <a class="btn btn-accent" href="https://github.com/TurboNZL/turbocut/releases">Get it</a>
           <a class="btn" href="https://github.com/TurboNZL/turbocut">Source on GitHub</a>
         </div>
@@ -129,8 +147,9 @@
         <p class="app-tag">Documents, spreadsheets and presentations as small apps in one shell.</p>
         <p class="app-desc">Docs, Sheets and Slides install into one themed desktop shell and open and save real Word, Excel and PowerPoint files.</p>
         <ul class="feats"><li><strong>Docs</strong> edits .docx, Markdown and plain text, pageless.</li><li><strong>Sheets</strong> opens .xlsx and .csv. Formulas are kept, but not calculated yet.</li><li><strong>Slides</strong> edits .pptx with a full-screen show and speaker notes.</li><li>Add or remove each app in Settings; the desktop shell updates itself.</li></ul>
-        <ul class="chips" aria-label="Where it runs"><li class="chip">Linux</li><li class="chip">Windows</li><li class="chip">Desktop (Electron)</li></ul>
+        <ul class="chips" aria-label="Where it runs"><li class="chip chip-vibe">Vibecoded for TurboNZL's own use</li><li class="chip">Linux</li><li class="chip">Windows</li><li class="chip">Desktop (Electron)</li></ul>
         <div class="links">
+          
           <a class="btn btn-accent" href="https://github.com/TurboNZL/turbodocs/releases">Get it</a>
           <a class="btn" href="https://github.com/TurboNZL/turbodocs">Source on GitHub</a>
         </div>
@@ -146,12 +165,13 @@
         <p class="app-tag">A budget that runs entirely in your browser.</p>
         <p class="app-desc">Accounts, subscriptions, debts, interest, taxes, a history timeline and a lot of graphs. There is no server and no account: your data never leaves your device.</p>
         <ul class="feats"><li>Add transactions, transfers between accounts and categories, with undo on delete.</li><li>Subscriptions from daily to every two years, yours, someone else's, or a loan with a person.</li><li>Debts with repayment history, plus an NZ student loan preset.</li><li>Data lives in your browser and in <code>.db</code> files you export yourself.</li></ul>
-        <ul class="chips" aria-label="Where it runs"><li class="chip">Browser only</li><li class="chip">No account</li><li class="chip">NZD, USD, EUR</li></ul>
+        <ul class="chips" aria-label="Where it runs"><li class="chip chip-vibe">Vibecoded for TurboNZL's own use</li><li class="chip">Browser only</li><li class="chip">No account</li><li class="chip">NZD, USD, EUR</li></ul>
         <div class="links">
-          <a class="btn btn-accent" href="https://github.com/TurboNZL/turbobudget/releases">Get it</a>
+          <a class="btn btn-accent" href="https://web.turbobudget.prismalite.org" rel="noopener">Open the web app</a>
+          <a class="btn" href="https://github.com/TurboNZL/turbobudget/releases">Get it</a>
           <a class="btn" href="https://github.com/TurboNZL/turbobudget">Source on GitHub</a>
         </div>
-        <p class="note">Called BudgetTrack inside the app for now.</p>
+        <p class="note">Runs entirely in your browser, so the web app is the app. Saved data is kept per address, so it stays on the device and address you used.</p>
       </div>
       <div class="showcase"><div class="showcase-body"><div class="stage-wrap" data-tabs><div class="tabs" role="group" aria-label="TurboBudget screenshots"><button type="button" class="btn" aria-pressed="true" data-show="0">Accounts</button><button type="button" class="btn" aria-pressed="false" data-show="1">Subscriptions</button><button type="button" class="btn" aria-pressed="false" data-show="2">Debts</button><button type="button" class="btn" aria-pressed="false" data-show="3">Graphs</button></div><figure class="shot card frame stage" data-shot><img src="img/screens/turbobudget-accounts.webp" width="1440" height="900" alt="Accounts and recent transactions." loading="lazy" decoding="async"><figcaption>Accounts and recent transactions.</figcaption></figure><figure class="shot card frame stage" data-shot><img src="img/screens/turbobudget-subs.webp" width="1440" height="900" alt="Recurring payments, with a projection." loading="lazy" decoding="async"><figcaption>Recurring payments, with a projection.</figcaption></figure><figure class="shot card frame stage" data-shot><img src="img/screens/turbobudget-debts.webp" width="1440" height="560" alt="Money owed, and money owed to you." loading="lazy" decoding="async"><figcaption>Money owed, and money owed to you.</figcaption></figure><figure class="shot card frame stage" data-shot><img src="img/screens/turbobudget-graphs.webp" width="1440" height="900" alt="Spending by category, debt by person and balances." loading="lazy" decoding="async"><figcaption>Spending by category, debt by person and balances.</figcaption></figure></div></div></div>
     </div>
@@ -212,10 +232,11 @@
     <nav aria-label="Elsewhere"><a href="https://github.com/TurboNZL">TurboNZL on GitHub</a><a href="https://github.com/TurboNZL/turboengine">turboengine</a><a href="https://github.com/TurboNZL/turbosuite">This site's source</a></nav>
     <p>Every screenshot on this page is a real capture of the running app, filled with sample data. Nothing is generated or mocked up.</p>
     <p>MIT licensed. This page loads no third-party scripts, fonts or trackers.</p>
+    <p>TurboSuite is vibecoded: directed by TurboNZL, written by AI, and made for TurboNZL's own use first. See <a href="#about">the note at the top</a>.</p>
   </div>
 </footer>
 
-<turbo-themes-picker floating></turbo-themes-picker>
+<turbo-themes-picker floating sections="theme,ui,wallpaper"></turbo-themes-picker>
 <script src="vendor/turbothemes/engine.global.js"></script>
 <script src="assets/site.js"></script>
 </body>

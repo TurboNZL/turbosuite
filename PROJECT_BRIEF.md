@@ -3,13 +3,14 @@
 The long-lived "why and what": goals, who it is for, rules the site must keep, architecture, roadmap with done-criteria. `CLAUDE.md` is the running log; this file changes rarely.
 
 ## Goal and user
-One public page that shows what the TurboNZL apps are, honestly, to someone who has never heard of them (and to the owner's own friends and household who will install them). It lives on a subdomain of the owner's PrismaLite domain.
+One public page that shows what the TurboSuite apps are, honestly, to someone who has never heard of them (and to the owner's own friends and household who will install them). It lives on a subdomain of the owner's PrismaLite domain.
 
 ## Feature inventory
 - Hero, one section per app (what it is, four plain features, where it runs, links to its releases and source, real screenshots with tabs), a "same app, different looks" section, a short "one engine" section, a "where each one runs" table, and a footer that says plainly the screenshots are real.
 - The visitor can change the page's look with the engine's picker; the choice is remembered.
 
 ## Rules that must not be broken
+0. **Be plain that the apps are vibecoded**: an AI writes the code, TurboNZL supplies the vision, and the apps were made for TurboNZL's own use first (third person on the page, never "I"). Never present them as hand-written or as products built for everyone. (Hero line, the `#about` section, a chip per app, the footer.)
 1. Only real screenshots of the running apps. No generated, drawn or mocked-up images. Say so on the page.
 2. No third-party requests, scripts, fonts or trackers. `scripts/check-site.mjs` enforces it.
 3. Never claim what an app's own notes say is unverified. Check the app's README, CLAUDE.md and release workflow before changing a claim.

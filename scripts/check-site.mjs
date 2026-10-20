@@ -91,6 +91,45 @@ for (const [name, width, height] of [['desktop', 1440, 900], ['tablet', 820, 110
   }
 }
 
+// every UI style the page can wear: the header must sit at the very top (a Liquid Glass `.btn { position: relative }` once turned the skip link into a 36px gap above it),
+// nothing may be covered, and the picker must offer no native <select> (the OS draws its list and no look can restyle it)
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, colorScheme: 'dark' });
+  const page = await ctx.newPage();
+  page.on('pageerror', (e) => bad('styles', `page error: ${e.message}`));
+  await page.goto(origin + '/', { waitUntil: 'load' });
+  const uis = ['default', 'soft', 'bevel', 'toolbar', 'liquid', 'terminal', 'lcd', 'neon', 'material']; // the open pack's nine UI styles
+  for (const ui of uis) {
+    await page.evaluate((u) => window.__turbothemesEngine.apply({ theme: 'default', ui: u }), ui);
+    await page.waitForTimeout(350);
+    const r = await page.evaluate(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      const top = Math.round(document.querySelector('.site-top').getBoundingClientRect().top);
+      const skipIsBtn = document.querySelector('.skip').classList.contains('btn');
+      // bring each one into view first (a larger style pushes the hero below the fold, and elementFromPoint is null off screen)
+      const covered = [...document.querySelectorAll('.site-nav a, .cta a, .top-gh, .icon-row a')].filter((e) => { e.scrollIntoView({ block: 'center', behavior: 'instant' }); const b = e.getBoundingClientRect(); if (!b.width) return false; const t = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2); return !(t === e || e.contains(t)); }).map((e) => e.textContent.trim() || e.getAttribute('title'));
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return { top, skipIsBtn, covered };
+    });
+    const noPointer = await page.evaluate(() => [...document.querySelectorAll('button:not(:disabled), .btn:not(:disabled)')].filter((b) => { const x = b.getBoundingClientRect(); return x.width > 0 && x.height > 0 && getComputedStyle(b).cursor !== 'pointer'; }).map((b) => (b.textContent || '').trim().slice(0, 20)));
+    if (noPointer.length) bad(`style ${ui}`, `no pointer cursor on: ${[...new Set(noPointer)].join(', ')}`);
+    if (r.top !== 0) bad(`style ${ui}`, `the header is ${r.top}px down at the top of the page`);
+    if (r.skipIsBtn) bad(`style ${ui}`, 'the skip link must not use .btn');
+    if (r.covered.length) bad(`style ${ui}`, `covered: ${r.covered.join(', ')}`);
+  }
+  await page.getByRole('button', { name: 'Themes' }).click();
+  const native = await page.evaluate(() => [...document.querySelectorAll('turbo-themes-picker select')].filter((x) => { const b = x.getBoundingClientRect(); return b.width > 2 && b.height > 2 && getComputedStyle(x).opacity !== '0'; }).length);
+  const themed = await page.locator('turbo-themes-picker button.themed-select').count();
+  if (native) bad('picker', `${native} native <select> visible`);
+  if (themed < 2) bad('picker', `expected themed drop-downs, found ${themed}`);
+  await page.locator('turbo-themes-picker button.themed-select').nth(1).click();
+  await page.locator('.themed-select-menu .ts-option', { hasText: 'Glass lens' }).click();
+  if ((await page.evaluate(() => document.documentElement.dataset.ui)) !== 'liquid') bad('picker', 'choosing Glass lens in the themed list did not change the look');
+  if (await page.locator('turbo-themes-picker .tt-pop').isHidden()) bad('picker', 'the picker closed when a row was chosen');
+  console.log('styles', uis.join(','), 'ok');
+  await ctx.close();
+}
+
 // links that stay on the site must point at something
 {
   const html = await readFile(join(root, 'index.html'), 'utf8');

@@ -18,8 +18,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .muted { color: hsl(var(--muted)); }
 .wrap { width: min(72rem, 100% - 2rem); margin-inline: auto; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.skip { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: .5rem .9rem; }
+.skip { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: .5rem .9rem; border-radius: var(--radius, .5rem); background: hsl(var(--accent)); color: hsl(var(--accent-fg)); text-decoration: none; font-weight: 600; }
 .skip:focus { top: .75rem; }
+/* The skip link must never be a .btn: some looks (Liquid Glass) make every .btn `position: relative`, which put it back in the flow as a 36px gap above the header. */
 :focus-visible { outline: 2px solid hsl(var(--accent)); outline-offset: 2px; }
 
 /* ---- top bar */
@@ -145,4 +146,17 @@ table.runs { width: 100%; border-collapse: collapse; min-width: 34rem; }
 @media (max-width: 30rem) {
   .icon-row { gap: .5rem; }
   .icon-row img { width: 2.9rem; height: 2.9rem; }
+}
+
+/* ---- the "vibecoded" notice: said at the top of the hero, in its own section, on every app and in the footer */
+.vibe-hero { margin-top: 1.4rem; max-width: 36rem; padding: .8rem 1rem; border-left: 3px solid hsl(var(--accent)); background: hsl(var(--surface) / .6); border-radius: 0 var(--radius, .5rem) var(--radius, .5rem) 0; font-size: .95rem; color: hsl(var(--muted)); }
+.vibe-hero strong { color: hsl(var(--fg)); }
+.vibe { padding: clamp(1.3rem, 3vw, 2.2rem); max-width: 52rem; border-left: 4px solid hsl(var(--accent)); display: grid; gap: .8rem; }
+.vibe h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.vibe p { font-size: 1.05rem; }
+.chips .chip-vibe { border: 1px solid hsl(var(--accent) / .7); color: hsl(var(--fg)); font-weight: 600; }
+
+@media (max-width: 30rem) {
+  .site-top .wrap { gap: .5rem; }
+  .site-nav a { padding: .4rem .42rem; font-size: .85rem; }
 }
