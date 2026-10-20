@@ -149,9 +149,13 @@ table.runs { width: 100%; border-collapse: collapse; min-width: 34rem; }
 }
 
 /* ---- the "vibecoded" notice: said at the top of the hero, in its own section and in the footer */
-.vibe-hero { margin-top: 1.4rem; max-width: 36rem; padding: .8rem 1rem; border-left: 3px solid hsl(var(--accent)); background: hsl(var(--surface) / .6); border-radius: 0 var(--radius, .5rem) var(--radius, .5rem) 0; font-size: .95rem; color: hsl(var(--muted)); }
+/* The accent stripe is an inner bar clipped by the box (overflow: hidden), not a border: every look sets its own borders and corner radius (Liquid Glass sets
+   `border: 0` on every .card and rounds to 22px+), so a border-left vanished or met a curve. Padding follows the look's radius so text never sits in a corner. */
+.vibe-hero, .vibe { position: relative; overflow: hidden; }
+.vibe-hero::before, .vibe::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: hsl(var(--accent)); }
+.vibe-hero { margin-top: 1.4rem; max-width: 36rem; padding: .9rem max(1.1rem, calc(var(--card-r, .5rem) * .8)) .9rem max(1.4rem, calc(var(--card-r, .5rem) * .8 + .35rem)); background: hsl(var(--surface) / .6); border-radius: var(--card-r, .5rem); font-size: .95rem; color: hsl(var(--muted)); }
 .vibe-hero strong { color: hsl(var(--fg)); }
-.vibe { padding: clamp(1.3rem, 3vw, 2.2rem); max-width: 52rem; border-left: 4px solid hsl(var(--accent)); display: grid; gap: .8rem; }
+.vibe { --vibe-pad: max(clamp(1.3rem, 3vw, 2.2rem), calc(var(--card-r, .75rem) * .9)); padding: var(--vibe-pad) var(--vibe-pad) var(--vibe-pad) calc(var(--vibe-pad) + .3rem); max-width: 52rem; display: grid; gap: .8rem; }
 .vibe h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
 .vibe p { font-size: 1.05rem; }
 
