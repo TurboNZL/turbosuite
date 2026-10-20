@@ -1,0 +1,30 @@
+# Every merge to main gets a version tag and a GitHub release: vYYYY.M.N (year, month, a counter that restarts each month), like every TurboNZL app.
+# This site has no installers to attach (the engine's release.yml has jobs for those); Cloudflare Pages deploys main by itself. Docs-only changes do not release.
+name: Release
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['**.md', 'docs/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Work out the next version
+        id: next
+        run: |
+          prefix="v$(date -u +%Y.%-m)."
+          last=$(git tag -l "${prefix}*" | sed "s/^${prefix}//" | sort -n | tail -1)
+          tag="${prefix}$(( ${last:--1} + 1 ))"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "Releasing $tag"
+      - name: Create the release (this also creates the tag)
+        run: gh release create "${{ steps.next.outputs.tag }}" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "${{ steps.next.outputs.tag }}" --generate-notes
+        env: { GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}' }

@@ -1,0 +1,11 @@
+import { session } from './lib.mjs';
+const s = await session({ w: 1440, h: 900 });
+const { p, shot } = s;
+await p.goto('http://127.0.0.1:5304/', { waitUntil: 'load' });
+await p.locator('input').first().fill('demo'); await p.locator('input[type=password]').first().fill('demo-password-1'); await p.keyboard.press('Enter');
+await p.waitForTimeout(2000);
+await p.getByText('All notes', { exact: true }).first().click();
+await p.waitForTimeout(1000);
+await p.getByText('Reading list 2026').first().click(); await p.waitForTimeout(1500);
+await shot('keep-desk-note', 1200);
+await s.close();

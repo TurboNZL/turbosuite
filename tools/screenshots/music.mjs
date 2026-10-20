@@ -1,0 +1,15 @@
+import { session } from './lib.mjs';
+const TOKEN = process.argv[2];
+const s = await session({ w: 1440, h: 900, storage: { 'turbomusic.settings': { serverUrl: 'http://127.0.0.1:5306', token: TOKEN } } });
+const { p, shot } = s;
+await p.goto('http://127.0.0.1:5306/', { waitUntil: 'load' });
+await p.waitForTimeout(5000);
+await shot('music-desk-home', 300);
+const go = async (label, name, wait = 1500) => { await p.getByRole('link', { name: label, exact: true }).first().click(); await shot(`music-desk-${name}`, wait); };
+await go('Albums', 'albums');
+await p.getByText('Low Tide Radio').first().click(); await shot('music-desk-album', 1500);
+await go('Rank', 'rank', 3500);
+await go('Tracks', 'tracks');
+await go('Artists', 'artists');
+await go('Stats', 'stats', 2000);
+await s.close();
