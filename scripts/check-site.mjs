@@ -111,6 +111,8 @@ for (const [name, width, height] of [['desktop', 1440, 900], ['tablet', 820, 110
       window.scrollTo({ top: 0, behavior: 'instant' });
       return { top, skipIsBtn, covered };
     });
+    const noPointer = await page.evaluate(() => [...document.querySelectorAll('button:not(:disabled), .btn:not(:disabled)')].filter((b) => { const x = b.getBoundingClientRect(); return x.width > 0 && x.height > 0 && getComputedStyle(b).cursor !== 'pointer'; }).map((b) => (b.textContent || '').trim().slice(0, 20)));
+    if (noPointer.length) bad(`style ${ui}`, `no pointer cursor on: ${[...new Set(noPointer)].join(', ')}`);
     if (r.top !== 0) bad(`style ${ui}`, `the header is ${r.top}px down at the top of the page`);
     if (r.skipIsBtn) bad(`style ${ui}`, 'the skip link must not use .btn');
     if (r.covered.length) bad(`style ${ui}`, `covered: ${r.covered.join(', ')}`);
