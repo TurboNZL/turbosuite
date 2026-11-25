@@ -1,18 +1,20 @@
-/* TurboNZL site: starts the theme engine, wires the screenshot tabs and the scroll reveal. No dependencies, no network.
+/* TurboSuite site: starts the theme engine, wires the screenshot tabs, the scroll reveal and the look picker (picker.js). No dependencies, no network.
    The page is complete without any of this (see the .js gate in site.css): the screenshots all show, the sections are all visible. */
 (function () {
   'use strict';
 
-  // ---- the look: the neutral pack of turbothemes, following the device's light/dark until the visitor picks one (the picker remembers the choice)
+  // ---- the look: the neutral pack of turbothemes. Dark until the visitor picks something else (the engine remembers the choice);
+  // the screenshots follow: every capture exists in a dark and a light version and the CSS shows the one that matches data-mode.
   try {
-    TurboThemes.start({
+    var themes = TurboThemes.start({
       persist: true,                 // the visitor's choice survives a reload
-      picker: true,                  // enables <turbo-themes-picker>
+      picker: false,                 // the page has its own picker (picker.js); it uses the engine's headless controller
       source: false,                 // no theme downloads: the page uses the pack it ships with
       autoUpdate: false,
       fonts: 'none',                 // system fonts; the page makes no request to a font host
-      appearance: { theme: 'system', ui: 'default' },
+      appearance: { theme: 'default', ui: 'default' },
     });
+    if (window.siteLook) window.siteLook(themes);
   } catch (err) {
     console.warn('turbothemes did not start; the page keeps its default colours', err);
   }
@@ -60,7 +62,7 @@
   }
 
   // ---- the top bar shows where you are
-  var links = Array.prototype.slice.call(document.querySelectorAll('.site-nav a'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href^="#"]'));
   var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
   function mark() {
     var line = window.innerHeight * 0.35, current = -1;

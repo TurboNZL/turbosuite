@@ -17,9 +17,9 @@ Every push to another branch gets a preview deployment, and this repository's `c
 ## Headers
 `site/_headers` is read by Pages. It sets a strict Content-Security-Policy (no inline scripts, nothing from other hosts), and cache times. If you add anything that loads from another host (an analytics script, a web font), the policy and `scripts/check-site.mjs` will both refuse it on purpose: change the policy deliberately, not around it.
 
-## After the domain is known
-- Add `<link rel="canonical">` and a social preview (`og:image` must be an absolute URL on the new domain; use a real screenshot, for example `img/screens/turbomusic-home.webp`).
-- Not done in the first version because the domain was not known.
+## The domain
+The pages name `https://turbosuite.prismalite.org` (canonical link, Open Graph, `og.png`), the address the apps' READMEs already point to. If the site moves to another address, change `head()` in `scripts/make-pages.mjs` and run it.
+The about page is `about/index.html` and is linked as `/about/`, which Pages serves without a redirect (a link to `about.html` would be redirected to `/about`).
 
 ## Releases
 Merges to `main` also tag a release (`.github/workflows/release.yml`). That is for consistency with the apps; Cloudflare deploys from the branch, not from the tag.

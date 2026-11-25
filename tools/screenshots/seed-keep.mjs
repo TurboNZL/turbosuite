@@ -4,18 +4,27 @@ const call = async (m, p, b) => { const r = await fetch(B + p, { method: m, head
 await call('POST', '/api/auth/login', { username: 'demo', password: 'demo-password-1' });
 const day = (n) => new Date(Date.now() + n * 864e5).toISOString().slice(0, 10);
 const N = [
-  { title: 'Renew passport', text: 'Photo, form, and the old passport. Takes about three weeks.', tags: ['life.admin'], onList: true, dueDate: day(3), pinned: true, percentDone: 0.25 },
+  { title: 'Renew passport', text: 'Photo, form, and the old passport. Takes about three weeks.\n\n- [x] Take the photo\n- [ ] Fill in the form\n- [ ] Post it', tags: ['life.admin'], onList: true, dueDate: day(3), pinned: true, percentDone: 0.25 },
   { title: 'Book dentist', tags: ['health'], onList: true, dueDate: day(1) },
   { title: 'Fix the bike light', text: 'New batteries first; if that is not it, the wiring at the hub.', tags: ['home.garage'], onList: true, percentDone: 0.5 },
   { title: 'Plan the Queenstown trip', text: '- Flights: look at Thursday vs Friday\n- Book the cabin before school holidays\n- **Check** the road to Glenorchy', tags: ['travel'], onList: true, dueDate: day(10), percentDone: 0.1 },
   { title: 'Water the tomatoes', tags: ['home.garden'], onList: true, dueDate: day(0) },
   { title: 'Send Sam the photos', tags: ['life.admin'], onList: true },
-  { title: 'Reading list 2026', text: '## Finished\n- *The Dispossessed*\n- *A Psalm for the Wild-Built*\n\n## Next\n- *Piranesi*\n- *Braiding Sweetgrass*', tags: ['life.reading'], pinned: true },
+  { title: 'Order the new bike lock', tags: ['home.garage'], onList: true, dueDate: day(6) },
+  { title: 'Cancel the old gym membership', text: 'They want 30 days notice in writing.', tags: ['life.admin'], onList: true, dueDate: day(2) },
+  { title: 'Return library books', tags: ['life.reading'], onList: true, dueDate: day(4) },
+  { title: 'Finish the quarterly report', text: 'Numbers are in; the summary and two charts left.', tags: ['work'], onList: true, dueDate: day(2), percentDone: 0.7 },
+  { title: 'Reading list 2026', text: '## Finished\n- *The Dispossessed*\n- *A Psalm for the Wild-Built*\n- *Station Eleven*\n\n## Next\n- *Piranesi*\n- *Braiding Sweetgrass*\n- *The Overstory*', tags: ['life.reading'], pinned: true },
   { title: 'Sourdough notes', text: 'Hydration **75%**, 20% starter, bulk 4 h at 24 C.\n\nFold every 30 minutes for the first two hours, then leave it alone. Cold proof overnight; bake at 240 C covered for 20 minutes, then uncovered for 20.', tags: ['home.food'] },
   { title: 'Router and network', text: 'Admin at 192.168.1.1. The Pi lives at .20 and runs the tunnel; do not change its address without updating the tunnel config.', tags: ['home.tech'] },
-  { title: 'Gift ideas', text: 'Mum: the good secateurs. Dad: that book on tide pools. Sam: nothing, a day out.', tags: ['life.people'] },
+  { title: 'Gift ideas', text: 'Mum: the good secateurs.\nDad: that book on tide pools.\nSam: nothing, a day out.\nNan: a plant that is hard to kill.', tags: ['life.people'] },
   { title: 'Meeting notes: Thursday', text: 'Decided to ship the Friday build. Rollback plan is the previous tag. Follow up on the migration timeline next week.', tags: ['work'] },
+  { title: 'Packing list: hiking', text: '- Boots, two pairs of socks\n- Rain jacket\n- Headtorch + spare batteries\n- 2 L water, snacks\n- First-aid kit\n- Map (paper)', tags: ['travel'] },
+  { title: 'Garden plan', text: 'Beds: tomatoes (north), beans (fence), herbs by the door.\nSow lettuce every three weeks from September.', tags: ['home.garden'] },
   { title: 'Done: submit tax return', onList: true, archived: true, tags: ['life.admin'] },
 ];
 for (const n of N.reverse()) await call('POST', '/api/notes', n);
 console.log((await call('GET', '/api/notes')).length, 'notes');
+
+const styles = { 'life': ['🌿', '3b82f6'], 'life.admin': ['📋', '6366f1'], 'life.people': ['👪', 'ec4899'], 'life.reading': ['📚', 'a855f7'], 'home': ['🏠', 'f59e0b'], 'home.garden': ['🌱', '22c55e'], 'home.food': ['🍞', 'd97706'], 'home.garage': ['🚲', '64748b'], 'home.tech': ['📡', '0ea5e9'], 'travel': ['✈️', '14b8a6'], 'health': ['❤️', 'ef4444'], 'work': ['💼', '475569'] };
+for (const [title, [emoji, color]] of Object.entries(styles)) await call('PATCH', '/api/tags', { title, emoji, color });

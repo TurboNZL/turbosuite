@@ -3,12 +3,10 @@ const s = await session({ w: 1440, h: 900, storage: { 'turbocut.settings': { set
 const { p, shot } = s;
 await p.goto('http://127.0.0.1:5302/', { waitUntil: 'load' });
 await p.waitForFunction(() => window.turbocutApp, null, { timeout: 20000 });
-for (const f of ['media/morning-clip.webm', 'media/closing-clip.webm']) {
-  await p.getByRole('button', { name: 'File', exact: true }).click();
-  const [ch] = await Promise.all([p.waitForEvent('filechooser'), p.getByRole('menuitem', { name: 'Import media…' }).click()]);
-  await ch.setFiles(f);
-  await p.waitForTimeout(1500);
-}
+const MD = process.env.CUTMEDIA || 'media';
+const [ch] = await Promise.all([p.waitForEvent('filechooser'), p.getByRole('button', { name: 'Import files…' }).click()]);
+await ch.setFiles([`${MD}/morning-clip.webm`, `${MD}/closing-clip.webm`]);
+await p.waitForTimeout(3500);
 const adds = p.getByRole('button', { name: 'Add', exact: true });
 await adds.nth(0).click(); await p.waitForTimeout(500);
 // move the playhead to the end of the first clip, then add the second

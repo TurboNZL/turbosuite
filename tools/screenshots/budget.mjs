@@ -3,7 +3,7 @@ const today = new Date().toISOString().slice(0, 10);
 const d = (m, day) => { const t = new Date(); t.setMonth(t.getMonth() - m, day); const r = t.toISOString().slice(0, 10); return r > today ? today : r; };
 const tx = []; let id = 1;
 const add = (type, amount, description, accountId, category, date, transferId) => tx.push({ id: id++, type, amount: type === 'withdrawal' ? -Math.abs(amount) : amount, description, accountId, category, date, ...(transferId ? { transferId } : {}) });
-for (let m = 5; m >= 0; m--) {
+for (let m = 8; m >= 0; m--) {
   add('income', 4180, 'Salary', 1, 'Income', d(m, 25));
   add('withdrawal', 1850, 'Rent', 1, 'Housing', d(m, 1));
   add('withdrawal', 96.4 + (m % 3) * 11, 'Power and internet', 1, 'Utilities', d(m, 8));
@@ -38,7 +38,9 @@ const db = {
   taxRules: [{ id: 1, name: 'RWT on interest', ratePct: 33, base: 'interest', incomeIsGross: false, rounding: 'nearest', active: true }],
   interestHistory: [], timelines: [],
 };
-const s = await session({ w: 1440, h: 900, storage: { 'budget-track-data': db } });
+// TurboBudget keeps its own look (it does not follow the device), so say which: the palette ids are in its pinned theme bundle
+const look = process.env.MODE === 'light' ? 'light' : 'dark';
+const s = await session({ w: 1440, h: 900, storage: { 'budget-track-data': db, 'turbobudget.appearance': { theme: look, ui: 'default', wallpaper: false, wallpaperDarkness: 0.45 } } });
 const { p, shot } = s;
 await p.goto('http://127.0.0.1:5301/', { waitUntil: 'load' });
 await p.waitForTimeout(2500);
