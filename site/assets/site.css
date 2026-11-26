@@ -4,7 +4,10 @@
    a narrow rail in the margin (number, icon, status), plain prose, spec-sheet facts, ruled lists and captions, rather than a grid of identical cards. */
 
 *, *::before, *::after { box-sizing: border-box; }
-:root { --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, "Bitstream Charter", "Noto Serif", Georgia, serif; --mono: ui-monospace, "SF Mono", "JetBrains Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace; --head: var(--serif); }
+/* Fraunces (SIL Open Font License, assets/fonts/OFL-Fraunces.txt), served from this site: no font host is contacted */
+@font-face { font-family: "Fraunces"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/fraunces-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-style: italic; font-weight: 400; font-display: swap; src: url("/assets/fonts/fraunces-latin-400-italic.woff2") format("woff2"); }
+:root { --serif: "Fraunces", "Iowan Old Style", Charter, Georgia, serif; --mono: ui-monospace, "SF Mono", "JetBrains Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace; --head: var(--serif); }
 /* looks that bring their own letterforms keep their own headings */
 html[data-ui="terminal"], html[data-ui="lcd"], html[data-ui="neon"], html[data-ui="material"], html[data-ui="toolbar"] { --head: var(--font); }
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; -webkit-text-size-adjust: 100%; }
@@ -91,7 +94,7 @@ section { padding: clamp(2.6rem, 6vw, 4.8rem) 0; }
 .index .meta { grid-column: 2; font-family: var(--mono); font-size: .76rem; color: hsl(var(--muted)); }
 .index .meta b { color: hsl(var(--fg)); font-weight: 600; }
 @media (min-width: 56rem) {
-  .index a { grid-template-columns: 2.4rem 15rem minmax(0, 1fr) 15rem; align-items: center; }
+  .index a { grid-template-columns: 2.4rem 17rem minmax(0, 1fr) 20rem; align-items: center; }
   .index .what, .index .meta { grid-column: auto; }
   .index .meta { text-align: right; }
 }
@@ -102,7 +105,7 @@ section { padding: clamp(2.6rem, 6vw, 4.8rem) 0; }
 @media (min-width: 62rem) { .app-grid { grid-template-columns: 10.5rem minmax(0, 1fr); } .rail { position: sticky; top: 5rem; align-self: start; } }
 .rail { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; }
 @media (min-width: 62rem) { .rail { display: block; } }
-.rail .num { font-family: var(--head); font-size: 3.6rem; font-weight: 800; line-height: .9; color: var(--app); letter-spacing: -.03em; display: block; }
+.rail .num { font-family: var(--head); font-size: 3.6rem; font-weight: 700; line-height: .9; color: var(--app); letter-spacing: -.03em; display: block; }
 .rail img { width: 4.2rem; height: 4.2rem; border-radius: 1rem; margin-top: 1rem; }
 @media (max-width: 61.99rem) { .rail img { margin-top: 0; width: 3.2rem; height: 3.2rem; } .rail .num { font-size: 2.4rem; } }
 .rail dl { margin-top: 1.2rem; display: grid; gap: .8rem; }

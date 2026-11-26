@@ -26,7 +26,7 @@ TurboMusic's audio is a synthesised tone (`ffmpeg`, below) so tracks count as ha
 
 `./run-all.sh dark light` runs every capture for both modes (it expects the apps to be running, the tokens in `MUSIC_TOKEN` and `PANTRY_TOKEN`, and `MEDIA`, `CUTMEDIA`, `OUT`). The captures are written to `./raw` (`OUT=<dir>` changes that). Then `python3 -I make-images.py raw ../../site/img/screens` makes the WebP files the site serves (and `site/og.png`), and `node ../../scripts/make-pages.mjs` writes the pages.
 
-Not captured: **TurboBox** (an Android app, nothing here could run it) and **TurboMC Server** (needs Qt 6.8, which the sandbox could not download). The page says so instead of showing a mock-up.
+Not captured: **TurboBox** (an Android app, nothing here could run it) and **TurboMC Server** (needs Qt 6.8, which the sandbox could not download). The page simply shows no screenshot area for them (no notice, no mock-up).
 
 ## The synthetic media
 ```

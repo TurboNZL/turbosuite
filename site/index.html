@@ -19,6 +19,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="apple-touch-icon" href="/icon-192.png">
 <link rel="prefetch" href="/about/">
+<link rel="preload" href="/assets/fonts/fraunces-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script src="/assets/boot.js"></script>
 <link rel="stylesheet" href="/vendor/turbothemes/base.css">
 <link rel="stylesheet" href="/assets/motion.css">
@@ -70,15 +71,15 @@
         <p>Eight apps and one toolkit, in the order they were made. Pick one to jump to it.</p>
       </div>
       <ol class="index">
-        <li><a href="#turbomusic"><span class="n">01</span><span class="nm"><img src="/img/apps/turbomusic.png" width="32" height="32" alt="">TurboMusic</span><span class="what">Library manager that ranks tracks by head-to-head votes.</span><span class="meta"><b>App</b> · Web (installable)</span></a></li>
-        <li><a href="#turbopantry"><span class="n">02</span><span class="nm"><img src="/img/apps/turbopantry.png" width="32" height="32" alt="">TurboPantry</span><span class="what">Recipe box, pantry and a shared shopping list.</span><span class="meta"><b>App</b> · Web (phone first)</span></a></li>
-        <li><a href="#turbokeep"><span class="n">03</span><span class="nm"><img src="/img/apps/turbokeep.png" width="32" height="32" alt="">TurboKeep</span><span class="what">To-dos and notes, tags, import and export.</span><span class="meta"><b>App</b> · Web</span></a></li>
-        <li><a href="#turbocut"><span class="n">04</span><span class="nm"><img src="/img/apps/turbocut.png" width="32" height="32" alt="">TurboCut</span><span class="what">Multi-track video editor with automatic captions.</span><span class="meta"><b>App</b> · Windows</span></a></li>
-        <li><a href="#turbodocs"><span class="n">05</span><span class="nm"><img src="/img/apps/turbodocs.png" width="32" height="32" alt="">TurboDocs</span><span class="what">Docs, Sheets and Slides in one themed shell.</span><span class="meta"><b>App</b> · Linux</span></a></li>
-        <li><a href="#turbobudget"><span class="n">06</span><span class="nm"><img src="/img/apps/turbobudget.png" width="32" height="32" alt="">TurboBudget</span><span class="what">Accounts, subscriptions, debts and graphs, in the browser.</span><span class="meta"><b>App</b> · Browser only</span></a></li>
-        <li><a href="#turbobox"><span class="n">07</span><span class="nm"><img src="/img/apps/turbobox.png" width="32" height="32" alt="">TurboBox</span><span class="what">Android app that keeps pinned web pages running with the screen off.</span><span class="meta"><b>App</b> · Android 8 or newer</span></a></li>
-        <li><a href="#turbomc-server"><span class="n">08</span><span class="nm"><img src="/img/apps/turbomc-server.png" width="32" height="32" alt="">TurboMC Server</span><span class="what">Desktop app for installing and running Minecraft servers.</span><span class="meta"><b>App</b> · Linux (.deb, rolling nightly)</span></a></li>
-        <li><a href="#turboui"><span class="n">09</span><span class="nm"><span class="ui-tile" style="--app:#e8571f;width:1.9rem;height:1.9rem;font-size:.7rem" aria-hidden="true">UI</span>TurboUI</span><span class="what">Rust toolkit that lays a screen out once and draws it natively.</span><span class="meta"><b>Toolkit</b> · Rust 1.88 or newer</span></a></li>
+        <li><a href="#turbomusic"><span class="n">01</span><span class="nm"><img src="/img/apps/turbomusic.png" width="32" height="32" alt="">TurboMusic</span><span class="what">Library manager that ranks tracks by head-to-head votes.</span><span class="meta"><b>App</b> · Web, Windows, Linux, Android</span></a></li>
+        <li><a href="#turbopantry"><span class="n">02</span><span class="nm"><img src="/img/apps/turbopantry.png" width="32" height="32" alt="">TurboPantry</span><span class="what">Recipe box, pantry and a shared shopping list.</span><span class="meta"><b>App</b> · Web, Android (early)</span></a></li>
+        <li><a href="#turbokeep"><span class="n">03</span><span class="nm"><img src="/img/apps/turbokeep.png" width="32" height="32" alt="">TurboKeep</span><span class="what">To-dos and notes, tags, import and export.</span><span class="meta"><b>App</b> · Web, Android</span></a></li>
+        <li><a href="#turbocut"><span class="n">04</span><span class="nm"><img src="/img/apps/turbocut.png" width="32" height="32" alt="">TurboCut</span><span class="what">Multi-track video editor with automatic captions.</span><span class="meta"><b>App</b> · Windows, Ubuntu, Android, Web</span></a></li>
+        <li><a href="#turbodocs"><span class="n">05</span><span class="nm"><img src="/img/apps/turbodocs.png" width="32" height="32" alt="">TurboDocs</span><span class="what">Docs, Sheets and Slides in one themed shell.</span><span class="meta"><b>App</b> · Linux, Windows</span></a></li>
+        <li><a href="#turbobudget"><span class="n">06</span><span class="nm"><img src="/img/apps/turbobudget.png" width="32" height="32" alt="">TurboBudget</span><span class="what">Accounts, subscriptions, debts and graphs, in the browser.</span><span class="meta"><b>App</b> · Browser</span></a></li>
+        <li><a href="#turbobox"><span class="n">07</span><span class="nm"><img src="/img/apps/turbobox.png" width="32" height="32" alt="">TurboBox</span><span class="what">Android app that keeps pinned web pages running with the screen off.</span><span class="meta"><b>App</b> · Android</span></a></li>
+        <li><a href="#turbomc-server"><span class="n">08</span><span class="nm"><img src="/img/apps/turbomc-server.png" width="32" height="32" alt="">TurboMC Server</span><span class="what">Desktop app for installing and running Minecraft servers.</span><span class="meta"><b>App</b> · Linux</span></a></li>
+        <li><a href="#turboui"><span class="n">09</span><span class="nm"><span class="ui-tile" style="--app:#e8571f;width:1.9rem;height:1.9rem;font-size:.7rem" aria-hidden="true">UI</span>TurboUI</span><span class="what">Rust toolkit that lays a screen out once and draws it natively.</span><span class="meta"><b>Toolkit</b> · Rust</span></a></li>
       </ol>
     </div>
   </section>
@@ -192,7 +193,7 @@
         <p class="runs-on">Runs on: <b>Android 8 or newer</b></p>
         <div class="links"><a class="btn btn-accent" href="https://github.com/TurboNZL/turbobox/releases">Get it</a><a class="textlink" href="https://github.com/TurboNZL/turbobox">Source</a></div>
         
-        <div class="showcase"><div class="nopic"><strong>No screenshots yet</strong><p>TurboBox is an Android app, and the captures on this page are made by running each app on a computer. Nothing here could run it on a phone, so rather than show a mock-up there is nothing to show. Its README has the details.</p></div></div>
+        
       </div>
     </div>
   </section>
@@ -208,7 +209,7 @@
         <p class="runs-on">Runs on: <b>Linux (.deb, rolling nightly)</b> · <b>Windows and macOS planned</b></p>
         <div class="links"><a class="btn btn-accent" href="https://github.com/TurboNZL/turbomc-server/releases/tag/nightly">Nightly build</a><a class="textlink" href="https://github.com/TurboNZL/turbomc-server">Source</a></div>
         
-        <div class="showcase"><div class="nopic"><strong>No screenshots yet</strong><p>TurboMC Server has to be built with Qt 6.8, which was not available where these captures were made, so it has not been run for this page. TurboUI below draws a screen of the same kind with its own renderer.</p></div></div>
+        
       </div>
     </div>
   </section>
